@@ -1,0 +1,11 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+
+<p>Are you sure you want to delete this customer <b>{{customer.name}}</b> from database?</p>
+<form action="{% url 'delete_customer' customer.id %}" method="post">
+    {% csrf_token %}
+<a class="btn btn-sm btn-warning"  href="{% url 'customers' %}"> Cancel </a>
+<input class="btn btn-sm btn-danger"  type="submit" name="Submit">
+</form>
+
+{% endblock %}

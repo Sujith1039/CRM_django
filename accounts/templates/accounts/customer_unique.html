@@ -1,0 +1,48 @@
+{% extends 'accounts/main.html' %}
+
+{% block content%}
+<br>
+<h1>Customer Info</h1>
+<table border="2" >
+    <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>date</th>
+    </tr>
+    
+     <tr>
+        <td>{{customers.name}}</td>
+        <td>{{customers.email}}</td>
+        <td>{{customers.date}}</td>
+            
+     </tr>
+
+</table>
+<br>
+
+<hr>
+<h1>Customer's Order</h1>
+<a  class="btn btn-sm btn-info"  href="{% url 'customer_order' customers.id %}">Create new order</a>
+<br>
+<br>
+<table border="2" >
+    <tr>
+        <th>customer</th>
+        <th>product</th>
+        <th>date</th>
+    </tr>
+{% for orders in orders %}
+
+    
+     <tr>
+        <td>{{orders.customer}}</td>
+        <td>{{orders.product}}</td>
+        <td>{{orders.date_created}}</td>
+            
+     </tr>
+
+
+{% endfor %}
+</table>
+<br>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'accounts/main.html' %}
+
+{% block content%}
+<br>
+<h1>Customers</h1>
+<a class="btn btn-sm btn-info" href="{% url 'create_customer' %}"> Add New Customer</a>
+<br>
+<br>
+<table border="2" >
+    <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>date</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+{% for customers in customers %}
+
+    
+     <tr>
+        <td>{{customers.name}}</td>
+        <td>{{customers.email}}</td>
+        <td>{{customers.date}}</td>
+        <td><a class="btn btn-sm btn-info"  href="{% url 'customers_unique' customers.id %}">View</a></td>
+        <td><a class="btn btn-sm btn-warning" href="{% url 'update_customer' customers.id %}">Update</a></td>
+        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_customer' customers.id %}">Delete</a></td>
+     </tr>
+
+   
+
+
+{% endfor %}
+</table>
+<br>
+
+<hr>
+
+<br>
+<h1>Orders</h1>
+<br>
+<h2>Filter orders </h2> <p style="color: blue;">Choose the value(s) in the field(s) you want to filter by and click search to filter.</p>
+<form method="get">
+    {{filter.form}}
+    <button type="submit">Search</button>
+</form>
+<br>
+<a class="btn btn-sm btn-info" href="{% url 'create_order'%}"> Add New Order</a>
+<br>
+<br>
+<table border="2" >
+    <tr>
+        <th>customer</th>
+        <th>product</th>
+        <th>date</th>
+        <th>Status</th>
+        <th>Notes</th>
+    </tr>
+{% for orders in orders %}
+
+    
+     <tr>
+        <td>{{orders.customer}}</td>
+        <td>{{orders.product}}</td>
+        <td>{{orders.date_created}}</td>
+        <td>{{orders.status}}</td>
+        <td>{{orders.notes}}</td>
+     </tr>
+
+
+{% endfor %}
+</table>
+<br>
+{% endblock %}

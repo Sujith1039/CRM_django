@@ -1,0 +1,28 @@
+{%extends 'accounts/main.html' %}
+{% block content %}
+
+<br>
+<a style="color: brown; margin-left: 90%; " href="{% url 'account_settings' %}">Profile_Edit</a>
+<h1>Your's Order</h1>
+<br>
+<table border="2" >
+    <tr>
+        <th>customer</th>
+        <th>product</th>
+        <th>date</th>
+    </tr>
+{% for orders in orders %}
+
+    
+     <tr>
+        <td>{{orders.customer}}</td>
+        <td>{{orders.product}}</td>
+        <td>{{orders.date_created}}</td>
+            
+     </tr>
+
+
+{% endfor %}
+</table>
+
+{% endblock %}
